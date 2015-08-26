@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 
 echo "Provisioning virtual machine..."
-apt-get update
+
+apt-get update > /dev/null
+apt-get install python-software-properties build-essential -y > /dev/null
+
 rm -rf /var/www
 ln -fs /vagrant/www /var/www
 
 echo "Installing curl"
 apt-get install -y curl libc6 libcurl3 zlib1g > /dev/null
 
+echo "Installing Git"
+add-apt-repository ppa:git-core/ppa -y > /dev/null
+apt-get update > /dev/null
+apt-get install git -y > /dev/null
+
 echo "Installing VIM"
 apt-get install vim -y > /dev/null
-
-echo "Installing Git"
-apt-get install git -y > /dev/null
     
 echo "Installing Nginx"
 apt-get install nginx -y > /dev/null
@@ -46,4 +51,3 @@ cp /vagrant/provision/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost 
 ln -sf /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
 rm -rf /etc/nginx/sites-available/default
 service nginx restart > /dev/null
-
