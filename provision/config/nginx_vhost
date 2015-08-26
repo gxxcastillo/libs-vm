@@ -1,0 +1,18 @@
+server {
+    listen  80;
+    server_name  libs-vm;
+
+    # Important for VirtualBox
+    sendfile off;
+
+    root   /var/www;
+    index index.js index.html;
+
+    access_log   /var/log/nginx/localhost.access.log;
+    error_log    /var/log/nginx/localhost.error.log error;
+
+    ## Default location
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
