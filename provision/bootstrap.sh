@@ -46,6 +46,12 @@ npm install -g grunt-cli > /dev/null
 echo "Install Yeoman"
 npm install -g yo > /dev/null
 
+echo "Preparing PhantomJs"
+apt-get install libfontconfig -y /dev/null # This is a hidden phantomjs dependency: https://github.com/ariya/phantomjs/issues/10904
+
+echo "Install PhantomJs"
+npm install -g phantomjs > /dev/null
+
 echo "Configuring Nginx"
 cp /vagrant/provision/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost > /dev/null
 ln -sf /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
