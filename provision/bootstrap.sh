@@ -47,7 +47,7 @@ echo "Install Yeoman"
 npm install -g yo > /dev/null
 
 echo "Preparing PhantomJs"
-apt-get install libfontconfig -y /dev/null # This is a hidden phantomjs dependency: https://github.com/ariya/phantomjs/issues/10904
+apt-get install libfontconfig > /dev/null # This is a hidden phantomjs dependency: https://github.com/ariya/phantomjs/issues/10904
 
 echo "Install PhantomJs"
 npm install -g phantomjs > /dev/null
